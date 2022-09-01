@@ -42,7 +42,7 @@ const getComments = async(id) => {
     const res = await response.json();
     if (res.error) return [];
     return res;
-  } catch (e) { /* eslint-disable-next-line */
+  } catch (e) {
     return []
   }
 };
@@ -54,7 +54,7 @@ const putComment = async(id, username, comment) => {
     comment,
     item_id: id,
   };
-  /* eslint-disable-next-line */
+
   const res = await fetch(url, {
     method: 'POST',
     body: JSON.stringify(raw),
@@ -104,7 +104,7 @@ const fetchPokemons = async() => {
   to.innerHTML = (start + pokemonsNumber - 1).toString();
   total.innerHTML = maxPokemons.toString();
   for (let i = start; i < (start + pokemonsNumber); i += 1) {
-    /* eslint-disable-next-line */
+
     await getPokemon(i);
   }
 
@@ -112,7 +112,7 @@ const fetchPokemons = async() => {
     likes.forEach((like) => {
       try {
         document.getElementById(like.item_id).innerHTML = like.likes;
-      } catch (e) { /* eslint-disable-next-line */ }
+      } catch (e) {}
     });
   });
   const likeBtn = document.querySelectorAll('.heartbtn');
@@ -130,7 +130,7 @@ const fetchPokemons = async() => {
   for (let i = 0; i < commentBtn.length; i += 1) {
     commentBtn[i].addEventListener('click', (e) => {
       const el = e.target.parentNode.children[3].children[1].children[0];
-      /* eslint-disable-next-line */
+
       fillOverlay(el.id);
     });
   }
@@ -140,7 +140,7 @@ const getPokemon = async(id) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(url);
   const pokemon = await res.json();
-  /* eslint-disable-next-line */
+
   createPokemonCard(pokemon);
 };
 
@@ -182,7 +182,7 @@ function createPokemonCard(pokemon) {
 </div>
 <div class="box-buttons">
 <span class="circle2"></span>
-<img src="https://i.imgur.com/rAT6iK5.png" alt="" class="burger">
+<img src="./images/menu.png" alt="" class="burger">
 </div>
 </div>
 </div>
